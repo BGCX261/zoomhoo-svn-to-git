@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!--  定义普通bean实例--> 
+	<bean id="hello" class="com.hessian.server.impl.Hello"/>
+	<!--  使用HessianServiceExporter 将普通bean导出成Hessian服务-->
+	<bean name="/HessianRemoting" 
+		class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<!--  需要导出的目标bean-->
+		<property name="service" ref="hello"/>
+		<!--  Hessian服务的接口-->                 
+		<property name="serviceInterface" value="com.hessian.server.iface.IHello"/>
+	</bean>
+</beans>

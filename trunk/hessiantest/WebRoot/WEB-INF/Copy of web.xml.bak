@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	
+		<!--  ????Spring???????-->
+		<context-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/remoting-servlet.xml</param-value>
+		</context-param>
+		<!-- ??ContextLoaderListener???????Spring -->
+		 <listener>
+			<listener-class> 
+				org.springframework.web.context.ContextLoaderListener</listener-class>
+		</listener>
+		
+		<!--<servlet>
+			<servlet-name>context</servlet-name>
+			<servlet-class> 
+				org.springframework.web.context.ContextLoaderServlet 
+				</servlet-class>
+			<load-on-startup>1</load-on-startup>
+		</servlet>-->
+		<!--  ?DispatcherServlet ???load-on-startup Servlet-->
+		<servlet>
+			<servlet-name>remoting</servlet-name>
+			<!--  Serlvet???-->
+			<servlet-class> 
+				org.springframework.web.servlet.DispatcherServlet</servlet-class>
+			<load-on-startup>1</load-on-startup>
+		</servlet>
+		<!--  ??Servlet url??-->
+		<servlet-mapping>
+			<servlet-name>remoting</servlet-name>
+			<url-pattern>/remoting/*</url-pattern>
+		</servlet-mapping>
+			
+	<servlet>
+		<servlet-name>Hello</servlet-name>
+		<servlet-class>com.caucho.hessian.server.HessianServlet</servlet-class>
+		<init-param>
+			<param-name>home-class</param-name>
+			<param-value>com.hessian.server.impl.Hello</param-value>
+		</init-param>
+		<init-param>
+			<param-name>home-api</param-name>
+			<param-value>com.hessian.server.iface.IHello</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Hello</servlet-name>
+		<url-pattern>/Hello</url-pattern>
+	</servlet-mapping>
+	
+	</web-app>
+

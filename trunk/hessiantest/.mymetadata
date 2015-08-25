@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="hessiantest"
+  id="myeclipse.1245226695843"
+  context-root="/hessiantest"
+  j2ee-spec="5.0"
+  archive="hessiantest.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
